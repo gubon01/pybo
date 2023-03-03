@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+    <form method="post">
+        {% csrf_token %}
+        <div class="mb-3 gap-3">
+            <label for="isbn" class="form-label">ISBN</label>
+            <input type="text" class="form-control" name="isbn" id="isbn">
+        </div>
+        <button type="submit" class="btn btn-outline-primary">검색하기</button>
+    </form>
+    <br>
+    <div class="d-flex justify-content-center">
+        <div class="card" style="width: 80vw;">
+            <img src="{{ thumbnail }}" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title">{{ title }}</h5>
+                <p class="card-text">{{ contents }}</p>
+            </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">지은이 : {{ author_comma }}</li>
+                <li class="list-group-item">출판사 : {{ publisher }}</li>
+                <li class="list-group-item">출판연도 : {{ datetime }}</li>
+            </ul>
+        </div>
+    </div>  
+</div>
+{% endblock %}
